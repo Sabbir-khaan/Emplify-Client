@@ -15,20 +15,63 @@ const Banner = () => {
           data-carousel-item
           style={{ backgroundImage: `url(${bannerImage1})` }}
         >
-          Hello BAngladesh
+          <div className="font-dosis mt-12 ml-10 lg:mt-50 lg:ml-50">
+            <h1 className="text-white leading-7 lg:leading-18 text-3xl lg:text-7xl font-bold">
+              Driving Company <br /> Success Through <br /> Smarter HR
+            </h1>
+            <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
+              Empower your workforce with seamless workflow <br /> tracking and efficient payroll management.
+            </p>
+            <button
+              type="button"
+              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Read More
+            </button>
+          </div>
         </div>
 
         <div
           className="hidden duration-700 ease-in-out bg-center bg-cover"
           data-carousel-item
           style={{ backgroundImage: `url(${bannerImage2})` }}
-        ></div>
+        >
+          <div className="font-dosis mt-12 ml-10 lg:mt-50 lg:ml-50">
+            <h1 className="text-white leading-7 lg:leading-18 text-3xl lg:text-7xl font-bold">
+              Stay Connected <br /> Stay Transparent.
+            </h1>
+            <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
+              Track employee progress, monitor tasks, and keep <br /> HR  operations clear and organized
+            </p>
+            <button
+              type="button"
+              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
 
         <div
           className="hidden duration-700 ease-in-out bg-center bg-cover"
           data-carousel-item
           style={{ backgroundImage: `url(${bannerImage3})` }}
-        ></div>
+        >
+          <div className="font-dosis mt-12 ml-10 lg:mt-50 lg:ml-50">
+            <h1 className="text-white leading-7 lg:leading-18 text-3xl lg:text-7xl font-bold">
+              Empowering Teams <br /> Simplifying HR.
+            </h1>
+            <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
+              From contracts to payroll, Emplify keeps <br /> everything secure and stress-free.
+            </p>
+            <button
+              type="button"
+              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Read More
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
