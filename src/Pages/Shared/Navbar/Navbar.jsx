@@ -4,12 +4,12 @@ import EmplifyLogo from "../EmplifyLogo/EmplifyLogo";
 const Navbar = () => {
   return (
     <nav className="border-b border-gray-200 shadow-sm">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+      <div className=" flex flex-wrap items-center justify-between mx-auto p-2">
         <div className="flex justify-center gap-2 items-center">
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
-            className="text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="text-sm mt-2 lg:mt-0 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-sticky"
             aria-expanded="false"
           >
