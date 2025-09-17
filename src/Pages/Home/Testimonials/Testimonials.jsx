@@ -9,7 +9,7 @@ const Testimonials = () => {
       name: "Ayesha Rahman",
       role: "HR Executive",
       appreciation:
-        "Emplify improved collaboration, streamlined workflows, and made project management effortless, helping our team stay productive, organized, and motivated every single day.",
+        "Emplify improved collaboration, and made project management effortless, helping our team stay productive, organized, and motivated every single day.",
     },
     {
       name: "Michael Lee",
@@ -44,14 +44,14 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="max-w-[80%] mx-auto my-28 bg-gray-100 rounded-2xl font-epunda">
-      <div className="mx-auto text-center pb-18">
-        <h2 className="text-4xl font-bold text-gray-800 pt-16 dark:text-white mb-10">
+    <section className="lg:max-w-[80%] mx-auto my-10 lg:my-28 bg-gray-100 rounded-2xl font-epunda">
+      <div className="text-center lg:pb-18">
+        <h2 className="lg:text-4xl text-3xl font-bold text-gray-800 lg:pt-16 pt-8 dark:text-white mb-4 lg:mb-10">
           Appreciation from Our Customers
         </h2>
         <p className="text-xl opacity-70">
           Our users consistently praise our service for its reliability, speed,
-          and intuitive design. They love how it <br />
+          and intuitive design. They love <br />
           simplifies tasks, boosts efficiency, and provides excellent support,
           making daily work seamless and enjoyable.
         </p>
@@ -80,7 +80,7 @@ const Testimonials = () => {
         >
           {testimonials.map((t, index) => (
             <SwiperSlide key={index}>
-              <div className="testimonial-card mt-12 bg-white dark:bg-gray-800 rounded-xl shadow-md p-20 transition-all duration-300 ease-in-out filter scale-90 hover:scale-100">
+              <div className="testimonial-card lg:mt-12 mt-4 bg-white rounded-xl shadow-md lg:p-20 p-10 transition-all duration-300 ease-in-out filter scale-90 hover:scale-100">
                 <div className="text-7xl text-gray-600 text-start">“</div>
                 <p className="text-gray-700 text-lg dark:text-gray-300 mb-6">
                   {t.appreciation}

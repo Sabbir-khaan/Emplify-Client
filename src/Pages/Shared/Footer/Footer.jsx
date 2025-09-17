@@ -7,7 +7,7 @@ import EmplifyLogo from "../EmplifyLogo/EmplifyLogo";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#08325A] ">
+    <footer className="bg-[#08325A] mt-20">
       <footer className="lg:flex justify-around pt-8 lg:pt-12 lg:max-w-[90%] mx-auto text-white">
         <div className="ml-10 lg:ml-0">
           <Link to="/"><EmplifyLogo></EmplifyLogo></Link>

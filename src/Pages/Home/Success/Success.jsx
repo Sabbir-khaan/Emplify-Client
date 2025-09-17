@@ -28,27 +28,27 @@ const Success = () => {
   ];
 
   return (
-    <section className="mt-26 font-epunda">
-      <div className="max-w-[90%] mx-auto">
-        <h2 className="text-5xl font-bold text-center mb-10 text-gray-800 dark:text-white">
+    <section className="lg:mt-26 mt-10 font-epunda">
+      <div className="lg:max-w-[90%] mx-auto px-3">
+        <h2 className="lg:text-5xl text-4xl font-bold text-center lg:mb-10">
           Our Company Services
         </h2>
 
         {stats.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col-reverse md:flex-row rounded justify-around mt-20"
+            className="lg:flex flex-col-reverse md:flex-row rounded justify-around mt-8 lg:mt-20"
           >
             <div>
-              <img className="w-[40rem] h-[22rem] rounded" src={item.img} />
+              <img className="lg:w-[40rem] lg:h-[22rem] rounded" src={item.img} />
             </div>
 
-            <div className="-ml-20 mt-8">
-              <h3 className="text-[2.5rem] font-semibold">{item.title}</h3>
-              <p className="text-xl w-xl mt-4">{item.desc}</p>
+            <div className="lg:-ml-20 lg:mt-8">
+              <h3 className="lg:text-[2.5rem] text-3xl font-semibold mt-3">{item.title}</h3>
+              <p className="lg:text-xl opacity-70 text-lg lg:w-xl mt-2 lg:mt-4">{item.desc}</p>
               <button
                 type="button"
-                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300  mt-6 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 mt-4 lg:mt-6 font-medium rounded-lg text-sm lg:px-5 px-3 lg:py-2.5 py-2 text-center me-2 mb-2"
               >
                 Learn More
               </button>

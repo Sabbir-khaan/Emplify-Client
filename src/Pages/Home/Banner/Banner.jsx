@@ -20,13 +20,14 @@ const Banner = () => {
               Driving Company <br /> Success Through <br /> Smarter HR
             </h1>
             <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
-              Empower your workforce with seamless workflow <br /> tracking and efficient payroll management.
+              Empower your workforce with seamless workflow <br /> tracking and
+              efficient payroll management.
             </p>
             <button
               type="button"
-              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 mt-2 lg:mt-5 font-medium rounded-lg text-sm lg:text-xl lg:px-6 px-3 lg:py-3 py-2.5 text-center me-2 mb-2"
             >
-              Read More
+              Learn More
             </button>
           </div>
         </div>
@@ -41,13 +42,14 @@ const Banner = () => {
               Stay Connected <br /> Stay Transparent.
             </h1>
             <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
-              Track employee progress, monitor tasks, and keep <br /> HR  operations clear and organized
+              Track employee progress, monitor tasks, and keep <br /> HR
+              operations clear and organized
             </p>
             <button
               type="button"
-              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 mt-2 lg:mt-5 font-medium rounded-lg text-sm lg:text-xl lg:px-6 px-3 lg:py-3 py-2.5 text-center me-2 mb-2"
             >
-              Read More
+              Learn More
             </button>
           </div>
         </div>
@@ -62,13 +64,14 @@ const Banner = () => {
               Empowering Teams <br /> Simplifying HR.
             </h1>
             <p className="text-white leading-4 lg:leading-8 text-lg lg:text-3xl lg:mt-4 mt-2">
-              From contracts to payroll, Emplify keeps <br /> everything secure and stress-free.
+              From contracts to payroll, Emplify keeps <br /> everything secure
+              and stress-free.
             </p>
             <button
               type="button"
-              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 mt-2 lg:mt-5 font-medium rounded-lg text-sm lg:text-xl lg:px-6 px-3 lg:py-3 py-2.5 text-center me-2 mb-2"
             >
-              Read More
+              Learn More
             </button>
           </div>
         </div>

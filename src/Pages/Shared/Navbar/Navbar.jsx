@@ -3,7 +3,7 @@ import EmplifyLogo from "../EmplifyLogo/EmplifyLogo";
 
 const Navbar = () => {
   return (
-    <nav className="border-b border-gray-200 shadow-sm">
+    <nav>
       <div className=" flex flex-wrap items-center justify-between mx-auto p-2">
         <div className="flex justify-center gap-2 items-center">
           <button

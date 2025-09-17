@@ -5,7 +5,7 @@ import Navbar from "../../Pages/Shared/Navbar/Navbar";
 const RootLayout = () => {
   return (
     <div>
-      <header>
+      <header className="lg:max-w-[80%] mx-auto">
         <Navbar></Navbar>
       </header>
       <main className="min-h-[calc(100vh-27.25rem)]">
