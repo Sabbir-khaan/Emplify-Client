@@ -24,7 +24,7 @@ const Banner = () => {
             </p>
             <button
               type="button"
-              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Read More
             </button>
@@ -45,7 +45,7 @@ const Banner = () => {
             </p>
             <button
               type="button"
-              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Read More
             </button>
@@ -66,7 +66,7 @@ const Banner = () => {
             </p>
             <button
               type="button"
-              class="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white mt-3 text-sm py-1.5 px-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-30 rounded-lg lg:px-6 lg:py-3 lg:mt-6 lg:text-xl font-bold dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Read More
             </button>
