@@ -36,16 +36,25 @@ const Success = () => {
 
         {stats.map((item, index) => (
           <div
+            data-aos="zoom-in-right"
+            data-aos-delay="100"
             key={index}
             className="lg:flex flex-col-reverse md:flex-row rounded justify-around mt-8 lg:mt-20"
           >
             <div>
-              <img className="lg:w-[40rem] lg:h-[22rem] rounded" src={item.img} />
+              <img
+                className="lg:w-[40rem] lg:h-[22rem] rounded"
+                src={item.img}
+              />
             </div>
 
             <div className="lg:-ml-20 lg:mt-8">
-              <h3 className="lg:text-[2.5rem] text-3xl font-semibold mt-3">{item.title}</h3>
-              <p className="lg:text-xl opacity-70 text-lg lg:w-xl mt-2 lg:mt-4">{item.desc}</p>
+              <h3 className="lg:text-[2.5rem] text-3xl font-semibold mt-3">
+                {item.title}
+              </h3>
+              <p className="lg:text-xl opacity-70 text-lg lg:w-xl mt-2 lg:mt-4">
+                {item.desc}
+              </p>
               <button
                 type="button"
                 className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 mt-4 lg:mt-6 font-medium rounded-lg text-sm lg:px-5 px-3 lg:py-2.5 py-2 text-center me-2 mb-2"
