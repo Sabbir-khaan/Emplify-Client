@@ -12,7 +12,7 @@ const PrivetRoutes = ({children}) => {
         return <Loading></Loading>
     }
     if(!user){
-        <Navigate to="login" state={loading.pathname}></Navigate>
+        return <Navigate to="login" state={loading.pathname}></Navigate>
     }
     return children;
 };

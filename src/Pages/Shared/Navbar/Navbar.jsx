@@ -51,12 +51,12 @@ const Navbar = () => {
           </button>
           <EmplifyLogo></EmplifyLogo>
         </div>
-        <div className="md:order-2 space-x-2">
+        <div className="md:order-2 space-x-1.5">
           {user ? (
             <>
               <img
-                className="w-[2.5rem] h-[2.5rem] inline rounded-full"
-                src={userLogo}
+                className="w-[2.5rem] h-[2.6rem] inline rounded-full mb-1"
+                src={user? user.photoURL:userLogo}
                 alt="User Image"
               />
               <button
@@ -101,9 +101,11 @@ const Navbar = () => {
             <li className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
               Contact Us
             </li>
-            <li className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-              Dashboard
-            </li>
+            {user && (
+              <li className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                Dashboard
+              </li>
+            )}
           </ul>
         </div>
       </div>

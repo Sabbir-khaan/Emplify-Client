@@ -1,21 +1,43 @@
 import EmplifyLogo from "../../Shared/EmplifyLogo/EmplifyLogo";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../../assets/LottieAnimation/register.json";
 import googleLogo from "../../../assets/Logo/google.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
-
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const { createUser, googleSignInUser } = useAuth();
+  const { createUser, googleSignInUser, updateUser } = useAuth();
+  const [profilePic, setProfilePic] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const onSubmit = (userData) => {
     console.log(userData);
     createUser(userData.email, userData.password)
       .then((result) => {
         console.log(result);
+        const updateUserProfile = {
+          displayName: userData.name,
+          photoURL: profilePic,
+        };
+        updateUser(updateUserProfile)
+          .then(() => {
+            console.log("profile pic updated");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        navigate(location.state || "/");
+        Swal.fire({
+          title: "Registered Account Successfully",
+          icon: "success",
+          draggable: true,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -26,10 +48,29 @@ const Register = () => {
     googleSignInUser()
       .then((result) => {
         console.log(result);
+        navigate(location.state || "/");
+        Swal.fire({
+          title: "Registered Account Successfully",
+          icon: "success",
+          draggable: true,
+        });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleImageUpload = async (e) => {
+    const image = e.target.files[0];
+    console.log(image);
+    const formData = new FormData();
+    const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_image_upload_key
+    }`;
+    formData.append("image", image);
+
+    const res = await axios.post(imageUploadUrl, formData);
+    setProfilePic(res.data.data.url);
   };
 
   return (
@@ -70,6 +111,7 @@ const Register = () => {
               />
               <label className="label opacity-70">Upload Your Photo</label>
               <input
+                onChange={handleImageUpload}
                 type="file"
                 name="photo"
                 className="input border border-gray-500 input-info w-full mt-2 rounded-lg mb-2"

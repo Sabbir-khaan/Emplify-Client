@@ -11,14 +11,14 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { register, handleSubmit } = useForm();
-  const { signInUser } = useAuth();
+  const { signInUser, googleSignInUser } = useAuth();
 
   const onSubmit = (userData) => {
     console.log(userData);
     signInUser(userData.email, userData.password)
       .then((result) => {
         if (result) {
-            navigate(location.state|| "/")
+          navigate(location.state || "/");
           Swal.fire({
             title: "Logged In Successfully",
             icon: "success",
@@ -29,6 +29,17 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleGoogleSignInUser = () => {
+    googleSignInUser()
+    .then(result=>{
+        console.log(result);
+        navigate(location.state|| "/")
+    })
+    .catch(error=>{
+        console.log(error);
+    })
   };
 
   return (
@@ -75,7 +86,9 @@ const Login = () => {
             </form>
             <div className="mt-6 border-b border-gray-300"></div>
             <div>
-              <button className="flex items-center justify-center py-2 rounded-lg border border-gray-400 mt-6 w-full gap-2 font-bold bg-white font-ubuntu">
+              <button
+              onClick={handleGoogleSignInUser}
+               className="flex items-center justify-center py-2 rounded-lg border border-gray-400 mt-6 w-full gap-2 font-bold bg-white font-ubuntu">
                 <img className="w-[32px]" src={googleLogo} alt="" /> Log In With
                 Google
               </button>
