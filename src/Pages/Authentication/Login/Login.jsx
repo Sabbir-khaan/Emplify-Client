@@ -10,7 +10,12 @@ import Swal from "sweetalert2";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm();
   const { signInUser, googleSignInUser } = useAuth();
 
   const onSubmit = (userData) => {
@@ -27,19 +32,48 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log("firebase error", error.code, error.message);
+        if (error.code === "auth/invalid-email") {
+          setError("email", {
+            type: "manual",
+            message: "Email is required.",
+          });
+        } else if (error.code === "auth/user-not-found") {
+          setError("email", {
+            type: "manual",
+            message: "Email not registered.",
+          });
+        } else if (error.code === "auth/missing-password") {
+          setError("password", {
+            type: "manual",
+            message: "Password is required.",
+          });
+        } else if (error.code === "auth/invalid-credential") {
+          // generic fallback for wrong credentials
+          setError("password", {
+            type: "manual",
+            message: "Invalid email and password.",
+          });
+        } else {
+          console.error(error);
+        }
       });
   };
 
   const handleGoogleSignInUser = () => {
     googleSignInUser()
-    .then(result=>{
+      .then((result) => {
         console.log(result);
-        navigate(location.state|| "/")
-    })
-    .catch(error=>{
+        navigate(location.state || "/");
+        Swal.fire({
+          title: "Logged In Successfully",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
         console.log(error);
-    })
+      });
   };
 
   return (
@@ -68,8 +102,11 @@ const Login = () => {
                 name="email"
                 placeholder="Enter Your Email"
                 className="input input-info w-full mt-2 rounded-lg mb-3"
-                required
+                // required
               />
+              {errors.email && (
+                <p className="text-red-500 mt-1">{errors.email.message}</p>
+              )}
               <br />
               <label className="label opacity-70">Password</label>
               <input
@@ -78,8 +115,11 @@ const Login = () => {
                 name="password"
                 placeholder="Enter Your Password"
                 className="input input-info w-full mt-2 rounded-lg"
-                required
+                // required
               />
+              {errors.password && (
+                <p className="text-red-500 mt-1">{errors.password.message}</p>
+              )}
               <button className="py-2 bg-[#08325A] w-full rounded-lg mt-8 text-white font-bold text-lg font-ubuntu">
                 Log In
               </button>
@@ -87,8 +127,9 @@ const Login = () => {
             <div className="mt-6 border-b border-gray-300"></div>
             <div>
               <button
-              onClick={handleGoogleSignInUser}
-               className="flex items-center justify-center py-2 rounded-lg border border-gray-400 mt-6 w-full gap-2 font-bold bg-white font-ubuntu">
+                onClick={handleGoogleSignInUser}
+                className="flex items-center justify-center py-2 rounded-lg border border-gray-400 mt-6 w-full gap-2 font-bold bg-white font-ubuntu"
+              >
                 <img className="w-[32px]" src={googleLogo} alt="" /> Log In With
                 Google
               </button>

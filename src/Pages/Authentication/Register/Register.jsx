@@ -10,7 +10,11 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { createUser, googleSignInUser, updateUser } = useAuth();
   const [profilePic, setProfilePic] = useState("");
   const location = useLocation();
@@ -79,11 +83,11 @@ const Register = () => {
         <EmplifyLogo></EmplifyLogo>
       </div>
       <div
-        className="lg:max-w-[60%] mx-auto gap-4 grid grid-cols-1 lg:grid-cols-2 mt-6 lg:mt-20 lg:p-6 p-4 border shadow-md border-gray-200 rounded-xl"
+        className="lg:max-w-[60%] mx-auto gap-4 grid grid-cols-1 lg:grid-cols-2 mt-6 lg:mt-10 lg:p-6 p-4 border shadow-md border-gray-200 rounded-xl"
         data-aos="zoom-out-up"
       >
         <div>
-          <div className="lg:p-8 p-2">
+          <div className="lg:p-4 p-2">
             <div className="flex items-center justify-center">
               <EmplifyLogo></EmplifyLogo>
               <h3 className="font-ubuntu font-bold text-xl md:text-[1.7rem] text-[#08325A]"></h3>
@@ -99,7 +103,11 @@ const Register = () => {
                 name="name"
                 placeholder="Enter Your Name"
                 className="input input-info w-full mt-2 rounded-lg mb-2"
+                required
               />
+              {/* {
+                errors.name && <p className="text-red-500">Name is Required</p>
+              } */}
               <br />
               <label className="label opacity-70">Email</label>
               <input
@@ -108,6 +116,7 @@ const Register = () => {
                 name="email"
                 placeholder="Enter Your Email"
                 className="input input-info w-full mt-2 rounded-lg mb-2"
+                required
               />
               <label className="label opacity-70">Upload Your Photo</label>
               <input
@@ -115,15 +124,22 @@ const Register = () => {
                 type="file"
                 name="photo"
                 className="input border border-gray-500 input-info w-full mt-2 rounded-lg mb-2"
+                required
               />
               <label className="label opacity-70">Password</label>
               <input
-                {...register("password")}
+                {...register("password" , {required:"Password is Required" , minLength:6, pattern:/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*(),.?":{}|<>]).+$/})}
                 type="password"
                 name="password"
                 placeholder="Enter Your Password"
                 className="input input-info w-full mt-2 rounded-lg"
               />
+              {
+                errors.password?.type === "minLength" && <p className="text-red-500 mt-1">Password Must be 6 Character or Long</p>
+              }
+              {
+                errors.password?.type === "pattern" && <p className="text-red-500 mt-1">Password Must Have a Capital Letter and a Special Character</p>
+              }
               <button className="py-2 bg-[#08325A] w-full rounded-lg mt-8 text-white font-bold text-lg font-ubuntu">
                 Register
               </button>
