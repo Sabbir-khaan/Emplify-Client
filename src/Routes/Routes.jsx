@@ -7,6 +7,7 @@ import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import PrivetRoutes from "./PrivetRoutes";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
+import WorkSheet from "../Pages/Dashboard/WorkSheet/WorkSheet";
 
 export const router=createBrowserRouter([
     {
@@ -39,7 +40,8 @@ export const router=createBrowserRouter([
         element:<PrivetRoutes><DashboardLayout></DashboardLayout></PrivetRoutes>,
         children:[
             {
-                
+                path:"work-sheet",
+                Component:WorkSheet,
             }
         ]
     }
