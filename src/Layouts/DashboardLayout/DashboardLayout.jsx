@@ -15,7 +15,7 @@ import { Outlet } from "react-router";
 
 const DashboardLayout = () => {
   return (
-    <div className="lg:flex h-screen">
+    <div className="lg:flex min-h-screen">
       {/* Sidebar for large screens */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="lg:w-96 bg-gray-100 dark:bg-gray-800 h-full p-4">
@@ -56,7 +56,7 @@ const DashboardLayout = () => {
         </Drawer>
       </div>
       {/* Main content */}
-      <div>
+      <div className="w-full">
         <Outlet></Outlet>
       </div>
     </div>

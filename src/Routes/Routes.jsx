@@ -40,7 +40,7 @@ export const router=createBrowserRouter([
         element:<PrivetRoutes><DashboardLayout></DashboardLayout></PrivetRoutes>,
         children:[
             {
-                path:"work-sheet",
+                path:"worksheet",
                 Component:WorkSheet,
             }
         ]
