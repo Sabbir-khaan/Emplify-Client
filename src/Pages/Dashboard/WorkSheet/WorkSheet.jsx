@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import {
@@ -36,10 +36,12 @@ import { Label } from "@/components/ui/label";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "@/Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const WorkSheet = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const { register, control, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -49,23 +51,34 @@ const WorkSheet = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    const userTask ={
-      ...data, 
-      email:user?.email,
-    }
-    console.log("Form Data:", data);
-    axiosSecure.post("/worksheet", userTask).then((res) => {
-      console.log(res.data);
-      if (res.data._id) {
-        Swal.fire({
-          title: "Task Added Successfully",
-          icon: "success",
-          draggable: true,
-        });
-      }
+  const formattedDate = selectedDate.toISOString().split("T")[0];
+  const { data: worksheets = [], refetch } = useQuery({
+    queryKey: ["my-worksheet", user?.email, formattedDate],
+    enabled: !!user?.email, // ✅ only run query if user is logged in
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `/worksheet?email=${user.email}&date=${formattedDate}`
+      );
+      return res.data;
+    },
+  });
+  console.log(worksheets);
+
+  const onSubmit = async (data) => {
+    const res = await axiosSecure.post("/worksheet", {
+      ...data,
+      date: new Date(data.date).toISOString().split("T")[0],
+      email: user.email, // 👈 Make sure to store who added it
     });
-    reset(); // clears form after submit
+    if (res.data._id) {
+      Swal.fire({
+        title: "Task Added Successfully",
+        icon: "success",
+        draggable: true,
+      });
+      refetch(); // 🔁 Refresh tasks after adding new one
+    }
+    reset();
   };
 
   return (
@@ -83,58 +96,57 @@ const WorkSheet = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">Sales</TableCell>
-              <TableCell>5</TableCell>
-              <TableCell>2025-09-20</TableCell>
-              <TableCell>
-                <Dialog>
-                  <form>
-                    <DialogTrigger asChild>
-                      <Button variant="none">
-                        <FaPen size={18} className="text-green-600" />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
-                      <DialogHeader>
-                        <DialogTitle>Edit profile</DialogTitle>
-                        <DialogDescription>
-                          Make changes to your profile here. Click save when
-                          you&apos;re done.
-                        </DialogDescription>
-                      </DialogHeader>
-                      <div className="grid gap-4">
-                        <div className="grid gap-3">
-                          <Label htmlFor="name-1">Name</Label>
-                          <Input
-                            id="name-1"
-                            name="name"
-                            defaultValue="Pedro Duarte"
-                          />
+            {worksheets.map((task) => (
+              <TableRow key={task._id}>
+                <TableCell className="font-medium">{task.task}</TableCell>
+                <TableCell>{task.hours}</TableCell>
+                <TableCell>
+                  {new Date(task.date).toLocaleDateString("en-CA")}
+                </TableCell>
+                <TableCell>
+                  <Dialog>
+                    <form>
+                      <DialogTrigger asChild>
+                        <Button variant="none">
+                          <FaPen size={18} className="text-green-600" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                          <DialogTitle>Edit Task</DialogTitle>
+                          <DialogDescription>
+                            Make changes to your task here. Click save when
+                            done.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4">
+                          <div className="grid gap-3">
+                            <Label htmlFor="task-name">Task</Label>
+                            <Input id="task-name" defaultValue={task.task} />
+                          </div>
+                          <div className="grid gap-3">
+                            <Label htmlFor="worked-hours">Worked Hours</Label>
+                            <Input
+                              id="worked-hours"
+                              defaultValue={task.hours}
+                            />
+                          </div>
                         </div>
-                        <div className="grid gap-3">
-                          <Label htmlFor="username-1">Username</Label>
-                          <Input
-                            id="username-1"
-                            name="username"
-                            defaultValue="@peduarte"
-                          />
-                        </div>
-                      </div>
-                      <DialogFooter>
-                        <DialogClose asChild>
-                          <Button variant="outline">Cancel</Button>
-                        </DialogClose>
-                        <Button type="submit">Save changes</Button>
-                      </DialogFooter>
-                    </DialogContent>
-                  </form>
-                </Dialog>
-              </TableCell>
-              <TableCell>
-                <MdDelete size={22} className="text-red-600" />
-              </TableCell>
-            </TableRow>
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <Button variant="outline">Cancel</Button>
+                          </DialogClose>
+                          <Button type="submit">Save changes</Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </form>
+                  </Dialog>
+                </TableCell>
+                <TableCell>
+                  <MdDelete size={22} className="text-red-600" />
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>
@@ -199,7 +211,10 @@ const WorkSheet = () => {
                 render={({ field }) => (
                   <DatePicker
                     selected={field.value}
-                    onChange={(date) => field.onChange(date)}
+                    onChange={(date) => {
+                      field.onChange(date);
+                      setSelectedDate(date);
+                    }}
                     className="w-full rounded-lg border-gray-300 opacity-50 mt-1"
                     dateFormat="yyyy-MM-dd"
                   />
